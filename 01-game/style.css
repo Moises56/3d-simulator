@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0f;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Orbitron', monospace;
+  overflow: hidden;
+}
+
+#game-container {
+  position: relative;
+  width: 800px;
+  height: 400px;
+}
+
+#game {
+  display: block;
+  background: linear-gradient(180deg, #0d0d1a 0%, #1a0a2e 100%);
+  border: 2px solid #0ff;
+  box-shadow: 0 0 20px #0ff, inset 0 0 50px rgba(0, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+#ui {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+#score-display {
+  font-size: 32px;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+#best-display {
+  font-size: 16px;
+  color: #f0f;
+  text-shadow: 0 0 10px #f0f;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 10, 15, 0.95);
+  gap: 20px;
+}
+
+.screen.hidden {
+  display: none;
+}
+
+h1 {
+  font-size: 48px;
+  color: #0ff;
+  text-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+  letter-spacing: 8px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+h2 {
+  font-size: 36px;
+  color: #f33;
+  text-shadow: 0 0 20px #f33, 0 0 40px #f33;
+  letter-spacing: 4px;
+}
+
+.tagline {
+  color: #888;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.instructions {
+  margin: 20px 0;
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.key {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #222;
+  border: 1px solid #0ff;
+  border-radius: 4px;
+  color: #0ff;
+  margin: 0 4px;
+}
+
+button {
+  font-family: 'Orbitron', monospace;
+  font-size: 18px;
+  padding: 12px 40px;
+  background: transparent;
+  border: 2px solid #0ff;
+  color: #0ff;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  transition: all 0.2s;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+button:hover {
+  background: #0ff;
+  color: #0a0a0f;
+  box-shadow: 0 0 30px #0ff;
+}
+
+.sound-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+#final-score {
+  font-size: 64px;
+  color: #0ff;
+  text-shadow: 0 0 20px #0ff;
+}
+
+#new-best {
+  font-size: 20px;
+  color: #ff0;
+  text-shadow: 0 0 20px #ff0;
+  animation: flash 0.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.shake {
+  animation: shake 0.3s ease-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
