@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laguitos · Universo 3D</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Pantalla de carga -->
+  <div id="loader">
+    <div class="loader-core"></div>
+    <p>Generando el cosmos…</p>
+  </div>
+
+  <!-- Panel de información -->
+  <div id="hud">
+    <div id="hud-top">
+      <h1>🌌 UNIVERSO 3D</h1>
+      <p class="subtitle">Sistema estelar procedural · personalizable</p>
+    </div>
+    <div id="planet-info" class="hidden">
+      <h2 id="pi-name">—</h2>
+      <div id="pi-rows"></div>
+      <div class="pi-esc">Pulsa <kbd>Esc</kbd> para vista libre</div>
+    </div>
+    <div id="hud-bottom">
+      <span>🖱️ Arrastra para orbitar · rueda para zoom · clic en cualquier cuerpo para enfocarlo</span>
+    </div>
+  </div>
+
+  <canvas id="scene"></canvas>
+
+  <!-- Three.js + addons vía importmap -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+      "lil-gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.19.2/dist/lil-gui.esm.js"
+    }
+  }
+  </script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

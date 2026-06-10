@@ -1,0 +1,153 @@
+:root {
+  --accent: #6cc8ff;
+  --accent-2: #b48bff;
+  --bg: #03040a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #e8eefc;
+  cursor: grab;
+}
+body:active { cursor: grabbing; }
+
+#scene {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+}
+
+/* ---------- HUD ---------- */
+#hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+#hud-top {
+  position: absolute;
+  top: 26px;
+  left: 30px;
+  text-shadow: 0 2px 18px rgba(0,0,0,.8);
+}
+#hud-top h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+#hud-top .subtitle {
+  font-size: .8rem;
+  opacity: .7;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+#hud-bottom {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .78rem;
+  opacity: .55;
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
+
+#planet-info {
+  position: absolute;
+  top: 110px;
+  left: 30px;
+  width: 240px;
+  padding: 18px 20px;
+  background: rgba(12, 16, 32, 0.55);
+  border: 1px solid rgba(108, 200, 255, 0.25);
+  border-radius: 14px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  transition: opacity .35s ease, transform .35s ease;
+}
+#planet-info.hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+#planet-info h2 {
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+.pi-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .82rem;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.pi-row span { opacity: .6; }
+.pi-row b { color: #fff; font-weight: 600; }
+.pi-esc {
+  margin-top: 12px;
+  font-size: .7rem;
+  opacity: .5;
+  text-align: center;
+}
+.pi-esc kbd {
+  background: rgba(255,255,255,.12);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: inherit;
+}
+
+/* ---------- Loader ---------- */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  background: radial-gradient(circle at 50% 50%, #0a0f24, #03040a 70%);
+  transition: opacity .8s ease;
+}
+#loader.done { opacity: 0; pointer-events: none; }
+#loader p { opacity: .7; letter-spacing: 2px; font-size: .85rem; }
+.loader-core {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--accent) 40%, var(--accent-2) 80%);
+  box-shadow: 0 0 50px var(--accent), 0 0 90px var(--accent-2);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(.85); opacity: .85; }
+  50%      { transform: scale(1.1); opacity: 1; }
+}
+
+/* lil-gui posición */
+.lil-gui.root {
+  --width: 290px;
+  z-index: 10;
+}
+
+@media (max-width: 640px) {
+  #hud-top h1 { font-size: 1.4rem; }
+  #planet-info { width: 200px; }
+}
